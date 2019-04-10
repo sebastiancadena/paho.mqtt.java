@@ -22,6 +22,7 @@ import java.util.Properties;
 import javax.net.SocketFactory;
 
 import org.eclipse.paho.client.mqttv3.util.Debug;
+import org.eclipse.paho.client.mqttv3.util.Strings;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -510,7 +511,8 @@ public class MqttConnectOptions {
 				return URI_TYPE_WSS;
 			}
 
-			if ((vURI.getPath() == null) || vURI.getPath().isEmpty()) {
+			//if ((vURI.getPath() == null) || vURI.getPath().isEmpty()) { // // Cannot use for Java 1.4.2
+			if ((vURI.getPath() == null) || Strings.isEmpty(vURI.getPath())) {
 				// No op path must be empty
 			}
 			else {
